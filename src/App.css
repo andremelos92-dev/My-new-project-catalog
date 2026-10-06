@@ -474,13 +474,15 @@ tbody tr:hover {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 0 6px;
   font-size: 13px;
   padding: 2px 4px 4px;
 }
 
 .column h2 {
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .deal-card {
