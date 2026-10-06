@@ -448,7 +448,7 @@ tbody tr:hover {
 
 .board {
   display: grid;
-  grid-template-columns: repeat(6, minmax(165px, 1fr));
+  grid-template-columns: repeat(6, minmax(150px, 1fr));
   gap: 12px;
   overflow-x: auto;
   padding-bottom: 8px;
