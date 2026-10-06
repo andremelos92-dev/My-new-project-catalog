@@ -1,16 +1,18 @@
-# React + Vite
+# Manual Catalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Type a model number and jump straight to the page of the manual it's on.
 
-Currently, two official plugins are available:
+## Adding manuals
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Put each PDF in `public/manuals/<Company>/`, for example `public/manuals/Carrier/30RB Product Data.pdf`.
+2. Run `npm run dev` to try it on your computer. The search index is rebuilt automatically.
+3. Commit and push.
 
-## React Compiler
+## How it works
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+`scripts/build-index.mjs` extracts the text of every page of every PDF and saves it as
+`public/manuals-index.json` (runs automatically before `npm run dev` and `npm run build`).
+The search ignores spaces, dashes and case, so `30rb120` finds `30RB-120`, and exact matches are listed first.
+Clicking a result (or pressing Enter) opens the PDF at that page (`file.pdf#page=N`).
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Note: scanned PDFs (pictures of pages, no selectable text) can't be searched.
