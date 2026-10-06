@@ -1,18 +1,28 @@
-# Manual Catalog
+# CRM
 
-Type a model number and jump straight to the page of the manual it's on.
+A simple CRM that runs entirely in the browser: contacts, companies, a deals pipeline,
+tasks with due dates, and an activity log of calls, emails, meetings and notes.
 
-## Adding manuals
+## Running it
 
-1. Put each PDF in `public/manuals/<Company>/`, for example `public/manuals/Carrier/30RB Product Data.pdf`.
-2. Run `npm run dev` to try it on your computer. The search index is rebuilt automatically.
-3. Commit and push.
+```
+npm install
+npm run dev
+```
 
-## How it works
+## Where the data lives
 
-`scripts/build-index.mjs` extracts the text of every page of every PDF and saves it as
-`public/manuals-index.json` (runs automatically before `npm run dev` and `npm run build`).
-The search ignores spaces, dashes and case, so `30rb120` finds `30RB-120`, and exact matches are listed first.
-Clicking a result (or pressing Enter) opens the PDF at that page (`file.pdf#page=N`).
+Everything is saved in your browser's local storage, so it stays on that computer and browser only.
+Clearing site data will erase it. Use **Export** (bottom of the sidebar) to download a backup file,
+and **Import** to load one back, including on a different computer.
 
-Note: scanned PDFs (pictures of pages, no selectable text) can't be searched.
+## What's where
+
+- `src/store.js`: the data (load, save, delete, export/import) and the page routing (`#/contacts/<id>` style URLs)
+- `src/forms.js`: the fields shown in each "New…" and "Edit" form
+- `src/components/`: one file per page (Home, Contacts, Companies, Deals, Tasks), plus shared pieces in `sections.jsx` and `ui.jsx`
+
+## Publishing
+
+Every push to `main` builds the app and publishes it to the `gh-pages` branch
+(see `.github/workflows/deploy.yml`). Live at https://andremelos92-dev.github.io/My-new-project-catalog/

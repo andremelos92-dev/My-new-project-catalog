@@ -1,5 +1,5 @@
 {
-  "name": "my-new-project-catalog",
+  "name": "my-crm",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,10 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "index": "node scripts/build-index.mjs",
-    "predev": "npm run index",
-    "prebuild": "npm run index"
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.2.8",
@@ -25,7 +22,6 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.6",
     "globals": "^17.12.0",
-    "pdfjs-dist": "^6.4.299",
     "vite": "^8.3.0"
   }
 }
